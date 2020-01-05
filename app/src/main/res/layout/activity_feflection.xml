@@ -4,24 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/fanshe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="反射" />
+    tools:context=".date1.ReflectionActivity">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="" />
+        android:onClick="methodClick"
+        android:text="获取方法" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="" />
+        android:onClick="constructorClick"
+        android:text="获取构造函数" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="fieldClick"
+        android:text="获取字段" />
 
 </LinearLayout>
