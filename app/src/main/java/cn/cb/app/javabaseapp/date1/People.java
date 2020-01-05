@@ -1,10 +1,13 @@
 package cn.cb.app.javabaseapp.date1;
 
+import androidx.annotation.NonNull;
+
 import cn.cb.app.javabaseapp.XLogUtils;
 
 public class People {
-    private String name;
-    int age;
+    String name;
+    private int age;
+//    protected double sex;
 
 
     public People(String name, int age) {
@@ -34,5 +37,11 @@ public class People {
     private void test() {
 
         XLogUtils.v("4->我是私有方法");
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "name = " + name + "    age = " + age;
     }
 }

@@ -1,11 +1,13 @@
 package cn.cb.app.javabaseapp;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import cn.cb.app.javabaseapp.date1.People;
@@ -19,14 +21,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        method();
+
     }
 
+    public void methodClick(View view) {
+        testMethod();
+    }
+
+    public void constructorClick(View view) {
+        testConstructor();
+    }
+
+    public void fieldClick(View view) {
+        testFile();
+    }
 
     /**
      * 获取方法相关
      */
-    private void method() {
+    private void testMethod() {
 
         try {
             Class clazz = Class.forName("cn.cb.app.javabaseapp.date1.People");
@@ -44,14 +57,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //实例化对象
-            People object = (People) clazz.newInstance();
+            Object object = clazz.newInstance();
 
             //3.获取指定的方法,int必须传int.class不需要传包装类
             Method method = clazz.getDeclaredMethod("setName", String.class);
             Method method2 = clazz.getDeclaredMethod("setAge", int.class);
             method.invoke(object, "曹斌");
             method2.invoke(object, 24);
-            XLogUtils.i("3->" + object.getName() + object.getAge());
+            XLogUtils.i("3->对象是" + object.toString());
             XLogUtils.i("3->" + method.toString() + space + "int方法->" + method2.toString() + space);
 
             //4.调用private方法,必须设置setAccessible(true)
@@ -68,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 获取类相关
      */
-    private void clzz() {
+    private void testConstructor() {
         try {
             //1.获取所有的构造方法
             Class cla1 = Class.forName("cn.cb.app.javabaseapp.date1.People");
@@ -90,4 +103,47 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
+    /**
+     * 域相关
+     */
+    private void testFile() {
+
+        try {
+            Class clazz = Class.forName("cn.cb.app.javabaseapp.date1.People");
+
+            //1.获取所有的字段，不能获取父类的
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                XLogUtils.d("1->" + field);
+            }
+
+            //这里需要主要 如果构造函数里有一个字段是private的 那么所有的地段在使用时 都要设置setAccessible=true
+            People people = (People) clazz.newInstance();
+            people.setName("张三");
+            people.setAge(18);
+
+
+            //2.获取指定的字段
+            Field ageField = clazz.getDeclaredField("age");
+            XLogUtils.e("2->" + ageField);
+
+            //3.获取字段的值,注意private需要加setAccessible=true
+            ageField.setAccessible(true);
+            XLogUtils.i("3年龄-> " + ageField.get(people));
+            Field nameField = clazz.getDeclaredField("name");
+            nameField.setAccessible(true);
+            XLogUtils.v("3姓名-> " + nameField.get(people));
+
+            //4.设置字段的值
+            nameField.set(people, "曹斌");
+            ageField.set(people, 24);
+            XLogUtils.d("4->" + people.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
