@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".date1.ReflectionActivity" />
+        <activity android:name=".proxy.ProxyActivity" />
     </application>
 
 </manifest>

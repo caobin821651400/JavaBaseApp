@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import cn.cb.app.javabaseapp.date1.ReflectionActivity;
+import cn.cb.app.javabaseapp.proxy.ProxyActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ReflectionActivity.class));
+            }
+        });
+        //代理
+        findViewById(R.id.daili).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ProxyActivity.class));
             }
         });
     }
