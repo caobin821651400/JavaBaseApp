@@ -19,7 +19,7 @@ public class StartAndRunDiffer {
 
 
     /**
-     *
+     * thread
      */
     private static class ThreadRun extends Thread {
         @Override
