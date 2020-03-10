@@ -1,5 +1,13 @@
 package cn.cb.app.javabaseapp.thread;
 
+/**
+ * ====================================================
+ *
+ * @User :caobin
+ * @Date :2020/3/10 23:08
+ * @Desc :start()和run()方法的区别
+ * ====================================================
+ */
 public class StartAndRunDiffer {
 
     public static void main(String[] args) {
