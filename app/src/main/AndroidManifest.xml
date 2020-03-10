@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".date1.ReflectionActivity" />
         <activity android:name=".proxy.ProxyActivity" />
+        <activity android:name=".thread.ThreadActivity" />
     </application>
 
 </manifest>

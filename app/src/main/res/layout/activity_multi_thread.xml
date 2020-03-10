@@ -7,10 +7,10 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/fanshe"
+        android:id="@+id/threeType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="反射" />
+        android:text="三种启动方式" />
 
     <Button
         android:id="@+id/daili"
@@ -20,10 +20,9 @@
         android:text="代理模式" />
 
     <Button
-        android:id="@+id/duoxiancheng"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="多线程" />
+        android:text="" />
 
 </LinearLayout>
